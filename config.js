@@ -23,7 +23,7 @@ global.packname = 'Volter'
 global.author = 'Botz'
 global.sessionName = 'volter'
 global.jumhal = '100000000000000'
-global.prefa = ['#','#']
+global.prefa = ['','!','.','#','&']
 global.sp = 'Volter Storee'
 global.mess = {
     success: '*_Done Kack_*',

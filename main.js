@@ -129,7 +129,7 @@ async function startVolter() {
                 let nyoutube = ('© Volter Botz')
                 let jumhal = '100000000000000'
                 if (anu.action == 'add') {
-                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `*Hai Kak @${num.split("@")[0]}*\n*Selamat Datang Di Grup ${metadata.subject}*\n\n*Intro Dulu Yuk*\n\n*➪ Nama:*\n*➪ Umur:*\n*➪ Askot:*\n\n*Jangan Lupa Baca Dan Patuhi Peraturan Yang Ada Jangan Buta*`, buttons: buttons, footer: nyoutube})
+                    volter.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `*Hai Kak @${num.split("@")[0]}*\n*Selamat Datang Di Grup ${metadata.subject}*\n\n*Intro Dulu Yuk*\n\n*➪ Nama:*\n*➪ Umur:*\n*➪ Askot:*\n\n*Jangan Lupa Baca Dan Patuhi Peraturan Yang Ada Jangan Buta*`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'promote') {
                     volter.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `*@${num.split('@')[0]} Berhasil Di Naikan Jadi Admin ${metadata.subject}*` })
                 } else if (anu.action == 'demote') {
