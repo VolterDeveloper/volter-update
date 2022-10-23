@@ -1,4 +1,3 @@
-
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
@@ -174,6 +173,10 @@ module.exports = volter = async (volter, m, chatUpdate, store) => {
         // Public & Self
         if (!volter.public) {
             if (!m.key.fromMe) return
+        }
+        
+        if (m.message) {
+            volter.sendReadReceipt(m.chat, m.sender, [m.key.id])
         }
 
 	// reset limit every 12 hours
