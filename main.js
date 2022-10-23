@@ -180,7 +180,7 @@ async function startVolter() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await volter.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await volter.getName(i + '@s.whatsapp.net')}\nFN:${await volter.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:tes1929@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/inibotvolter\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await volter.getName(i + '@s.whatsapp.net')}\nFN:${await volter.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:volterbusinnes@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/inibotvolter\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	volter.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
@@ -210,19 +210,11 @@ async function startVolter() {
     volter.serializeM = (m) => smsg(volter, m, store)
 
     volter.ev.on('connection.update', async (update) => {
-        const { connection, lastDisconnect } = update	    
+        const { connection, lastDisconnect } = update
         if (connection === 'close') {
-        let reason = new Boom(lastDisconnect?.error)?.output.statusCode
-            if (reason === DisconnectReason.badSession) { console.log(`Bad Session File, Please Delete Session and Scan Again`); volter.logout(); }
-            else if (reason === DisconnectReason.connectionClosed) { console.log("Connection closed, reconnecting...."); startVolter(); }
-            else if (reason === DisconnectReason.connectionLost) { console.log("Connection Lost from Server, reconnecting..."); startVolter(); }
-            else if (reason === DisconnectReason.connectionReplaced) { console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First"); Volter.logout(); }
-            else if (reason === DisconnectReason.loggedOut) { console.log(`Device Logged Out, Please Scan Again And Run.`); volter.logout(); }
-            else if (reason === DisconnectReason.restartRequired) { console.log("Restart Required, Restarting..."); startVolter(); }
-            else if (reason === DisconnectReason.timedOut) { console.log("Connection TimedOut, Reconnecting..."); startVolter(); }
-            else Volter.end(`Unknown DisconnectReason: ${reason}|${connection}`)
+            lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? startVolter() : console.log('Koneksi Terputus...')
         }
-        console.log('Connected...', update)
+        console.log('Berhasil Connected Di Server Volter', update)
     })
 
     volter.ev.on('creds.update', saveState)
