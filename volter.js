@@ -632,32 +632,9 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             break
             case 'runtime': {
             	let lowq = `*Bot Telah Online Selama*\n*${runtime(process.uptime())}*`
-                let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑SEWA' }, type: 1 }]
+                let buttons = [{ buttonId: 'sewabot', buttonText: { displayText: '👑SEWA' }, type: 1 }]
                 await volter.sendButtonText(m.chat, buttons, lowq, nyoutube, m, {quoted: fkontak})
             	}
-            break
-            case 'req': case 'request': {
-            	if (!text) throw `Example : ${prefix + command} Fitur Min`
-               let ownernya = ownernomer + '@s.whatsapp.net'
-               let me = m.sender
-               let pjtxt = `Pesan Dari : @${me.split('@')[0]} \nUntuk : @${ownernya.split('@')[0]}\n\n${command} ${text}`
-               let ments = [ownernya, me]
-               let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: '🙏THANKS' }, type: 1 }]
-            await volter.sendButtonText(ownernya, buttons, pjtxt, nyoutube, m, {mentions: ments, quoted: fdoc})
-            let akhji = `*Request Telah Terkirim*\n*Ke Owner @${ownernya.split('@')[0]}*\n_Terima Kasih🙏_`
-            await volter.sendButtonText(m.chat, buttons, akhji, nyoutube, m, {mentions: ments, quoted: fkontak})
-            }
-            break
-            case 'react': {
-                if (!isCreator) throw mess.owner
-                reactionMessage = {
-                    react: {
-                        text: args[0],
-                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
-                    }
-                }
-                volter.sendMessage(m.chat, reactionMessage)
-            }
             break  
             case 'join': {
                 if (!isPremium) throw mess.premime
@@ -890,55 +867,6 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
                 volter.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
-            break
-            case 'report': case 'lapor': {
-            	if (!text) throw `Example : ${prefix + command} Lapor Ada Fitur Yang error`
-               let ownernya = ownernomer + '@s.whatsapp.net'
-               let me = m.sender
-               let pjtxt = `Pesan Dari : @${me.split('@')[0]} \nUntuk : @${ownernya.split('@')[0]}\n\n${text}`
-               let ments = [ownernya, me]
-               let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: '🙏THANKS LAPORANNYA' }, type: 1 }]
-            await volter.sendButtonText(ownernya, buttons, pjtxt, nyoutube, m, {mentions: ments})
-            let akhji = `Laporan Telah Terkirim\nKe Owner @${ownernya.split('@')[0]}\n*Terima Kasih Laporannya🙏*\n_Nomermu Akan Terblokir_\n_Jika Laporan Hanya Di Buat Buat_`
-            await volter.sendButtonText(m.chat, buttons, akhji, nyoutube, m, {mentions: ments})
-            }
-            break
-            case 'hehehe': {
-                reactionMessage = {
-                    react: {
-                        text: '❤',
-                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
-                    }
-                }
-                volter.sendMessage(m.chat, reactionMessage)
-            }
-            break  
-            break
-            case 'bcgc': case 'bcgroup': {
-                if (!isCreator) throw mess.owner
-                if (!text) throw `Text mana?\n\nExample : ${prefix + command} Volter Storee`
-                let getGroups = await volter.groupFetchAllParticipating()
-                let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
-                let anu = groups.map(v => v.id)
-                m.reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1.5} detik`)
-                for (let i of anu) {
-                    await sleep(1500)
-                    let txt = `「 *Broadcast Group* 」\n\n${text}`
-                    let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '⌕ List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '⌕ Donasi' }, type: 1 }]
-            await volter.sendButtonText(m.chat, buttons, txt, nyoutube, m)
-		}}
-            break
-            case 'bc': case 'broadcast': case 'bcall': {
-                if (!isCreator) throw mess.owner
-                if (!text) throw `Text mana?\n\nExample : ${prefix + command} Volter Storee`
-                let anu = await store.chats.all().map(v => v.id)
-                m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
-		for (let yoi of anu) {
-		    await sleep(3000)
-                      let txt = `「 *Broadcast Bot Volter* 」\n\n${text}`
-                      let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '⌕ List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '⌕ Donasi' }, type: 1 }]
-            await volter.sendButtonText(m.chat, buttons, txt, nyoutube, m)
-		}}
 	    break
 	    case 'anonymous': {
                 if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
@@ -1310,14 +1238,6 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
            await volter.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'volter', 'morou', m, {asSticker: true})
          
          }
-         break
-         case 'tts': {
-         if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
-		db.data.users[m.sender].limit -= 1 // -1 limit
-         	if (!text) throw `Example : ${prefix + command} text`
-             let tts = await fetchJson(`https://api.akuari.my.id/texttovoice/texttosound_id?query=${text}`)
-             volter.sendMessage(m.chat, { audio: { url: tts.result }, mimetype: 'audio/mpeg', fileName: `${text}.mp3` }, { quoted: fvn })
-         	}
          break
 	       case 'smeme': case 'stickmeme': case 'stikmeme': case 'stickermeme': case 'stikermeme': {
 	        let respond = `Kirim/reply image/sticker dengan caption ${prefix + command} text1|text2`
