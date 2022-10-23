@@ -24,7 +24,7 @@ const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
 const nyoutube = ('® Volter Botz')  //ubah di config biar ngk emror
-const nyoutubee = ('® notes : button ga muncul ? #allmenu/n/nnot spam ya decks')  //ubah di config biar ngk emror
+const nyoutubee = ('® notes : button ga muncul ? #allmenu')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 
@@ -176,7 +176,7 @@ module.exports = volter = async (volter, m, chatUpdate, store) => {
         }
         
         if (m.message) {
-            volter.sendReadReceipt(m.chat, m.sender, [m.key.id])
+            volter.readMessages([m.key])
         }
 
 	// reset limit every 12 hours
@@ -1476,60 +1476,64 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
             case 'allmenu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
-            let jawab = `╭──❲ *NEW MENU* ❳
-│◦〉 menfess
-│◦〉 anonymous
+            let jawab = `╭──❲ *PREMIUM MENU* ❳
+│➳ join
+╰───────⊱
+
+╭──❲ *NEW MENU* ❳
+│➳ menfess
+│➳ anonymous
 ╰───────⊱
 
 ╭──❲ *OTHERS MENU* ❳
-│◦〉 rules
-│◦〉 sewabot
-│◦〉 allmenu
+│➳ rules
+│➳ sewabot
+│➳ allmenu
 ╰───────⊱
 
 ╭──❲ *DOWNLOADER MENU* ❳
-│◦〉 tiktoknowm 
-│◦〉 tiktokmp3 
+│➳ tiktoknowm 
+│➳ tiktokmp3 
 ╰───────⊱
 
 ╭──❲ *CONVERT MENU* ❳
-│◦〉 attp 
-│◦〉 toimage 
-│◦〉 sticker 
-│◦〉 removebg 
-│◦〉 tourl
-│◦〉 tovideo
-│◦〉 smeme
+│➳ attp 
+│➳ toimage 
+│➳ sticker 
+│➳ removebg 
+│➳ tourl
+│➳ tovideo
+│➳ smeme
 ╰───────⊱
  
 ╭──❲ *GROUP MENU* ❳
-│◦〉 linkgroup
-│◦〉 ephemeral 
-│◦〉 setppgc
-│◦〉 setname
-│◦〉 setdesc 
-│◦〉 group 
-│◦〉 editinfo 
-│◦〉 kick 
-│◦〉 hidetag 
-│◦〉 tagall
-│◦〉 antilink 
-│◦〉 mute 
-│◦〉 promote 
-│◦〉 demote
+│➳ linkgroup
+│➳ ephemeral 
+│➳ setppgc
+│➳ setname
+│➳ setdesc 
+│➳ group 
+│➳ editinfo 
+│➳ kick 
+│➳ hidetag 
+│➳ tagall
+│➳ antilink 
+│➳ mute 
+│➳ promote 
+│➳ demote
 ╰───────⊱
 
 ╭──❲ *GAME MENU* ❳
-│◦〉 jodohku 
-│◦〉 apakah 
-│◦〉 slot 
-│◦〉 jadian 
-│◦〉 kapankah 
-│◦〉 gbtku 
-│◦〉 bisakah 
-│◦〉 tictactoe
-│◦〉 afk
-│◦〉 suitpvp
+│➳ jodohku 
+│➳ apakah 
+│➳ slot 
+│➳ jadian 
+│➳ kapankah 
+│➳ gbtku 
+│➳ bisakah 
+│➳ tictactoe
+│➳ afk
+│➳ suitpvp
 ╰───────⊱`
             let ments = [ownernya, me, ini_mark]
             let buttons = [{ buttonId: 'owner', buttonText: { displayText: '⌕ Owner' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: '⌕ Info Bot' }, type: 1 }]
