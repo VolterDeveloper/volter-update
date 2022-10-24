@@ -1189,8 +1189,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             
 //PEMBATAS=================VOLTER======================            
             case 'sticker': case 's': {
-            if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
-		db.data.users[m.sender].limit -= 1 // -1 limit
+            if (!isPremium) throw mess.premime
             if (!quoted) throw `*Balas Video/Image Dengan Caption* ${prefix + command}`
             m.reply(mess.wait)
                     if (/image/.test(mime)) {
@@ -1232,14 +1231,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 	    }
 	    break
 	    case 'attp': case 'ttp': {
-	    if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
-		db.data.users[m.sender].limit -= 1 // -1 limit
+	    if (!isPremium) throw mess.premime
            if (!text) throw `Example : ${prefix + command} text`
            await volter.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'volter', 'morou', m, {asSticker: true})
          
          }
          break
 	       case 'smeme': case 'stickmeme': case 'stikmeme': case 'stickermeme': case 'stikermeme': {
+	       if (!isPremium) throw mess.premime
 	        let respond = `Kirim/reply image/sticker dengan caption ${prefix + command} text1|text2`
 	        if (!/image/.test(mime)) throw respond
             if (!text) throw respond
@@ -1255,14 +1254,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
 	       break     
 	        case 'simih': case 'simisimi': {
+	        if (!isPremium) throw mess.premime
             if (!text) throw `Example : ${prefix + command} text`
             hm = await fetchJson(api('zenz', '/api/simisimi', { text : text }, 'apikey'))
             m.reply(hm.result.message)
             }
             break
             case 'toimage': case 'toimg': {
-            if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
-		db.data.users[m.sender].limit -= 1 // -1 limit
+            if (!isPremium) throw mess.premime
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Balas sticker dengan caption *${prefix + command}*`
                 m.reply(mess.wait)
@@ -1291,8 +1290,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
 	        case 'tourl': {
-	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
-		db.data.users[m.sender].limit -= 1 // -1 limit
+	        if (!isPremium) throw mess.premime
                 m.reply(mess.wait)
 		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
                 let media = await volter.downloadAndSaveMediaMessage(quoted)
@@ -1398,6 +1396,13 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
             let me = m.sender
             let jawab = `╭──❲ *PREMIUM MENU* ❳
 │➳ join
+│➳ attp
+│➳ ttp
+│➳ smeme
+│➳ simih
+│➳ tourl
+│➳ toimg
+│➳ sticker
 ╰───────⊱
 
 ╭──❲ *NEW MENU* ❳
@@ -1417,13 +1422,8 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
 ╰───────⊱
 
 ╭──❲ *CONVERT MENU* ❳
-│➳ attp 
-│➳ toimage 
-│➳ sticker 
-│➳ removebg 
-│➳ tourl
+│➳ removebg
 │➳ tovideo
-│➳ smeme
 ╰───────⊱
  
 ╭──❲ *GROUP MENU* ❳
