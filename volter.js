@@ -1127,7 +1127,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             
 //PEMBATAS=================VOLTER======================
             case 'tiktok': case 'tiktoknowm': {
-            if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
+            if (!isPremium) throw mess.premime
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
                 let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
@@ -1146,7 +1146,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'tiktokmp3': case 'tiktokaudio': {
-            if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
+            if (!isPremium) throw mess.premime
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
                 let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
@@ -1403,6 +1403,8 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
 │➳ tourl
 │➳ toimg
 │➳ sticker
+│➳ tiktokmp3
+│➳ tiktoknowm
 ╰───────⊱
 
 ╭──❲ *NEW MENU* ❳
@@ -1414,11 +1416,6 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
 │➳ rules
 │➳ sewabot
 │➳ allmenu
-╰───────⊱
-
-╭──❲ *DOWNLOADER MENU* ❳
-│➳ tiktoknowm 
-│➳ tiktokmp3 
 ╰───────⊱
 
 ╭──❲ *CONVERT MENU* ❳
