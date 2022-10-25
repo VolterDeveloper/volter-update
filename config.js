@@ -26,15 +26,15 @@ global.jumhal = '100000000000000'
 global.prefa = ['','!','.','#','&']
 global.sp = 'Volter Storee'
 global.mess = {
-    success: '*_Done MassZe ✅_*',
-    admin: '*_Fitur Khusus Admin Group ‼️_*',
-    botAdmin: '*_Bot Harus Menjadi Admin Terlebih Dahulu MassZe !!_*',
-    premime: '*_Fitur Khusus Premium Kalo Mau Daftar Ketik #sewabot_*',
-    owner: '*_Fitur Khusus Owner Bot_*',
-    group: '*_Fitur Digunakan Hanya Untuk Group!_*',
-    private: '*_Fitur Digunakan Hanya Untuk Private Chat!_*',
-    bot: '*_Fitur Khusus Pengguna Nomor Bot_*',
-    wait: '*_Proses Ya MassZe 🙏_*',
+    success: '*_DONE ... ✅_*',
+    admin: '*_FITUR KHUSUS ADMIN GROUP ❗_*',
+    botAdmin: '*_BOTZ HARUS MENJADI ADMIN TERLEBIH DAHULU ❗_*',
+    premime: '*_FITUR KHUSUS USER PREM , MAU DAFTAR ? KETIK #owner ❗_*',
+    owner: '*_FITUR KHUSUS OWNER BOTZ ❗_*',
+    group: '*_FITUR DIGUNAKAN KHUSUS GROUP❗_*',
+    private: '*_FITUR DIGUNAKAN KHUSUS PRIVATE ❗_*',
+    bot: '*_FITUR KHUSUS PENGGUNA NOMOR BOTZ ❗_*',
+    wait: '*_[❗] SEDANG DIPROSES_*',
     endLimit: '*_Limit Harian Anda Telah Habis, Limit Akan Direset Setiap Jam 12_*',
 }
 global.limitawal = {
