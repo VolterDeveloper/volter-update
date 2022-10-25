@@ -1135,7 +1135,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.result.nowm },
+                    video: { url: anu.result },
                     caption: `Download From ${text}`,
                     footer: nyoutube,
                     buttons: buttons,
