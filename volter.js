@@ -632,7 +632,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             break
             case 'runtime': {
             	let lowq = `*Bot Telah Online Selama*\n*${runtime(process.uptime())}*`
-                let buttons = [{ buttonId: 'sewabot', buttonText: { displayText: '👑SEWA' }, type: 1 }]
+                let buttons = [{ buttonId: 'sewabot', buttonText: { displayText: 'Sewa Botz' }, type: 1 }]
                 await volter.sendButtonText(m.chat, buttons, lowq, nyoutube, m, {quoted: fkontak})
             	}
             break  
@@ -647,6 +647,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             break
             case 'leave': {
                 if (!isCreator) throw mess.owner
+                m.reply(mess.wait)
                 await volter.groupLeave(m.chat).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
             }
             break
@@ -668,6 +669,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
 	break
 	case 'promote': {
 		if (!m.isGroup) throw mess.group
+		        if (!isCreator) throw mess.owner
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
@@ -676,6 +678,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
 	break
 	case 'demote': {
 		if (!m.isGroup) throw mess.group
+		        if (!isCreator) throw mess.owner
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
@@ -1126,7 +1129,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             break
             
 //PEMBATAS=================VOLTER======================
-            case 'tiktok': case 'tiktoknowm': {
+            case 'Erorrr': case 'Erorrr': {
                 if (!text) throw '*Masukan Link Video Tiktok Yang Valid*'
                 m.reply(mess.wait)
                 let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
@@ -1135,7 +1138,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.result },
+                    video: { url: anu.result.nowm },
                     caption: `Download From ${text}`,
                     footer: nyoutube,
                     buttons: buttons,
@@ -1144,7 +1147,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 volter.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-            case 'tiktokmp3': case 'tiktokaudio': {
+            case 'Erorrrr': case 'Erorrrr': {
                 if (!text) throw '*Masukan Link Video Tiktok Yang Valid*'
                 m.reply(mess.wait)
                 let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
@@ -1178,7 +1181,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                let me = m.sender
                let ments = [mq1, ownernya, me]
                let pjtxt = `Pesan Dari : ${m2} \nUntuk : @${mq1.split('@')[0]}\n\n${m3}`
-               let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: '❤LIKE' }, type: 1 }]
+               let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'Owner' }, type: 1 }]
             await volter.sendButtonText(m1 + '@s.whatsapp.net', buttons, pjtxt, kawk, m, {mentions: ments, quoted: kafloc})
             let akhji = `Pesan Telah Terkirim\nKe @${mq1.split('@')[0]}`
             await volter.sendButtonText(m.chat, buttons, akhji, nyoutube, m, {mentions: ments})
@@ -1395,64 +1398,63 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
             m.reply(mess.wait)
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
-            let jawab = `╭──❲ *PREMIUM MENU* ❳
-│➳ join
-│➳ attp
-│➳ ttp
-│➳ smeme
-│➳ simih
-│➳ tourl
-│➳ toimg
-│➳ sticker
-│➳ tiktokmp3
-│➳ tiktoknowm
-╰───────⊱
+            let jawab = `┌──❖ 「 *PREMIUM MENU* 」
+├│ join
+├│ attp
+├│ ttp
+├│ smeme
+├│ simih
+├│ tourl
+├│ toimg
+├│ sticker
+└──❖
 
-╭──❲ *NEW MENU* ❳
-│➳ menfess
-│➳ anonymous
-╰───────⊱
+┌──❖「 *NEW MENU* 」
+├│ menfess
+├│ anonymous
+└──❖
 
-╭──❲ *OTHERS MENU* ❳
-│➳ rules
-│➳ sewabot
-│➳ allmenu
-╰───────⊱
+┌──❖「 *OTHERS MENU* 」
+├│ rules
+├│ sewabot
+├│ allmenu
+└──❖
 
-╭──❲ *CONVERT MENU* ❳
-│➳ removebg
-│➳ tovideo
-╰───────⊱
+┌──❖「 *CONVERT MENU* 」
+├│ removebg
+├│ tovideo
+└──❖
  
-╭──❲ *GROUP MENU* ❳
-│➳ linkgroup
-│➳ ephemeral 
-│➳ setppgc
-│➳ setname
-│➳ setdesc 
-│➳ group 
-│➳ editinfo 
-│➳ kick 
-│➳ hidetag 
-│➳ tagall
-│➳ antilink 
-│➳ mute 
-│➳ promote 
-│➳ demote
-╰───────⊱
+┌──❖「 *GROUP MENU* 」
+├│ linkgroup
+├│ ephemeral 
+├│ setppgc
+├│ setname
+├│ setdesc 
+├│ group 
+├│ editinfo 
+├│ kick 
+├│ hidetag 
+├│ tagall
+├│ welcome
+├│ antilink 
+├│ mute 
+├│ promote 
+├│ demote
+└──❖
 
-╭──❲ *GAME MENU* ❳
-│➳ jodohku 
-│➳ apakah 
-│➳ slot 
-│➳ jadian 
-│➳ kapankah 
-│➳ gbtku 
-│➳ bisakah 
-│➳ tictactoe
-│➳ afk
-│➳ suitpvp
-╰───────⊱`
+┌──❖「 *GAME MENU* 」
+├│ jodohku 
+├│ apakah 
+├│ slot 
+├│ jadian 
+├│ kapankah 
+├│ gbtku 
+├│ bisakah 
+├│ tictactoe
+├│ afk
+├│ suitpvp
+└──❖`
             let ments = [ownernya, me, ini_mark]
             let buttons = [{ buttonId: 'owner', buttonText: { displayText: '⌕ Owner' }, type: 1 },{ buttonId: 'ping', buttonText: { displayText: '⌕ Info Bot' }, type: 1 }]
             await volter.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: ments, quoted: fkontak})
