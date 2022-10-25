@@ -23,8 +23,8 @@ const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('® Volter Botz')  //ubah di config biar ngk emror
-const nyoutubee = ('® notes : button ga muncul ? #allmenu')  //ubah di config biar ngk emror
+const nyoutube = ('© Volter Botz')  //ubah di config biar ngk emror
+const nyoutubee = ('© notes : button ga muncul ? #allmenu')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 
@@ -1127,12 +1127,11 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             
 //PEMBATAS=================VOLTER======================
             case 'tiktok': case 'tiktoknowm': {
-            if (!isPremium) throw mess.premime
-                if (!text) throw 'Masukkan Query Link!'
+                if (!text) throw '*Masukan Link Video Tiktok Yang Valid*'
                 m.reply(mess.wait)
                 let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
                 let buttons = [
-                    {buttonId: `menu`, buttonText: {displayText: '📖List Menu'}, type: 1},
+                    {buttonId: `allmenu`, buttonText: {displayText: '📖List Menu'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
@@ -1146,8 +1145,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'tiktokmp3': case 'tiktokaudio': {
-            if (!isPremium) throw mess.premime
-                if (!text) throw 'Masukkan Query Link!'
+                if (!text) throw '*Masukan Link Video Tiktok Yang Valid*'
                 m.reply(mess.wait)
                 let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
                 let buttons = [
@@ -1233,6 +1231,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 	    case 'attp': case 'ttp': {
 	    if (!isPremium) throw mess.premime
            if (!text) throw `Example : ${prefix + command} text`
+           m.reply(mess.wait)
            await volter.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'volter', 'morou', m, {asSticker: true})
          
          }
@@ -1367,6 +1366,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
             }
             break
             case 'menu': {
+            m.reply(mess.wait)
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
             let jawab = `_Hi ${pushname} ${ucapanWaktu}_
@@ -1392,6 +1392,7 @@ let buttons = [{ buttonId: 'menu', buttonText: { displayText: '⌕ List Menu' },
             }
             break
             case 'allmenu': {
+            m.reply(mess.wait)
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
             let jawab = `╭──❲ *PREMIUM MENU* ❳
